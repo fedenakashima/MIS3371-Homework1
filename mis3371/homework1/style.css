@@ -16,5 +16,10 @@ h1 {
   color: #1a1a1a;
 }
 
+#header {
+  text-align: center;
+  padding: 20px;
+}
+
 a:link { color: blue; }
 a:visited { color: purple; }
