@@ -1,0 +1,20 @@
+/*
+Program name: style.css
+Author: Federica Nakashima
+Date created: 2026-02-16
+Date last edited: 2026-02-16
+Version: 1.0
+Description: CSS styling for MIS 3371 Homework 1 patient form.
+*/
+
+body {
+  background-color: #f0f8ff;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #1a1a1a;
+}
+
+a:link { color: blue; }
+a:visited { color: purple; }
