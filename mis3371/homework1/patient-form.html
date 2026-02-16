@@ -6,32 +6,47 @@ Date last edited: 2026-02-16
 Version: 1.0
 Description: Patient registration form for MIS 3371 Homework 1.
 -->
+
 <!DOCTYPE html>
 <html>
 <head>
-  <div id="header">
-  <img src="logo.png" alt="Heartland Medical Care Logo" width="120">
-  <h1>Heartland Medical Care</h1>
-</div>
   <title>Patient Registration Form</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <h1>Patient Registration Form</h1>
-  <p>This is Homework 1 for MIS 3371.</p>
-  
-  <div id="header"> </div>
 
-  <div id="main"> </div>
+  <!-- Header / Banner -->
+  <div id="header">
+    <img src="logo.png" alt="Heartland Medical Care Logo" width="120">
+    <h1>Heartland Medical Care</h1>
+    <p>Today is: <span id="todayDate"></span></p>
 
-<div id="footer"> </div>
+    <script>
+      const d = new Date();
+      document.getElementById("todayDate").innerHTML = d.toDateString();
+    </script>
+  </div>
 
-  <form action="thankyou.html">
+  <!-- Main Content -->
+  <div id="main">
+    <h2>Patient Registration Form</h2>
+    <p>This is Homework 1 for MIS 3371.</p>
 
-    <input type="submit" value="Submit">
+    <form action="thankyou.html">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
 
-  </form>
+  <!-- Footer -->
+  <div id="footer">
+    <button type="button" onclick="alert('Contact us at: contact@heartlandmedicalcare.com')">
+      Contact Us
+    </button>
+  </div>
+
+</body>
+</html>
 
 </body>
 </html>
