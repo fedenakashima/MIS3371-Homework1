@@ -18,49 +18,55 @@ Description: Patient registration form for MIS 3371 Homework 1.
 
   <!-- Header / Banner -->
   <div id="header">
-    <img src="heartland-logo.png" alt="Heartland Medical Care Logo" width="150">
-    <h1>Heartland Medical Care</h1>
-    <p> <span id="todayDate"></span></p>
+    <img src="heartland-logo.png" alt="Heartland Medical Care Logo" id="logo">
 
-    <script>
-      const d = new Date();
-      document.getElementById("todayDate").innerHTML = d.toDateString();
-    </script>
+    <div id="headerText">
+      <h1>Heartland Medical Care</h1>
+      <div id="slogan">Compassion in Every Heartbeat</div>
+      <div id="dateLine"><span id="todayDate"></span></div>
+    </div>
   </div>
 
-  <!-- Main Content -->
-  <div id="main">
+  <!-- Form Title Bar -->
+  <div id="titleBar">
     <h2>Patient Registration Form</h2>
-    <p>This is Homework 1 for MIS 3371.</p>
-
-<form action="thankyou.html">
-
-  <table>
-    <tr>
-      <td><label for="firstName">First Name:</label></td>
-      <td>
-        <input type="text" id="firstName" name="firstName" maxlength="30" required>
-      </td>
-    </tr>
-  </table>
-
-  <br>
-
-  <input type="submit" value="Submit">
-
-</form>
-    
+    <p>Make sure you fill all the questions before submission</p>
   </div>
 
-  <!-- Footer -->
-  <div id="footer">
-    <button type="button" onclick="alert('Contact us at: contact@heartlandmedicalcare.com')">
-      Contact Us
-    </button>
+  <!-- Main Form Panel -->
+  <div id="formPanel">
+    <form action="thankyou.html">
+
+      <table class="formTable">
+        <tr>
+          <td><label for="firstName">First Name</label></td>
+          <td><input type="text" id="firstName" name="firstName" maxlength="30" required></td>
+
+          <td class="spacer"></td>
+
+          <td><label for="middleInit">Middle Name Initial</label></td>
+          <td><input type="text" id="middleInit" name="middleInit" maxlength="1"></td>
+        </tr>
+
+        <tr>
+          <td><label for="lastName">Last Name</label></td>
+          <td><input type="text" id="lastName" name="lastName" maxlength="30" required></td>
+        </tr>
+      </table>
+
+      <!-- Bottom Buttons -->
+      <div id="buttonRow">
+        <input type="reset" value="Reset" class="btn btnReset">
+        <input type="submit" value="Submit" class="btn btnSubmit">
+      </div>
+
+    </form>
   </div>
 
-</body>
-</html>
+  <script>
+    const d = new Date();
+    document.getElementById("todayDate").innerHTML = d.toDateString();
+  </script>
 
 </body>
 </html>
