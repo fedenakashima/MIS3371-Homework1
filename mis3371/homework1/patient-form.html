@@ -2,62 +2,151 @@
 Program name: patient-form.html
 Author: Federica Nakashima
 Date created: 2026-01-25
-Date last edited: 2026-02-16 at 3:24 PM
+Date last edited: 2026-02-24 at 2:00 PM
 Version: 1.0
 Description: Patient registration form for MIS 3371 Homework 1.
 -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Patient Registration Form</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- Header / Banner -->
-  <div id="header">
-    <img src="heartland-logo.png" alt="Heartland Medical Care Logo" id="logo">
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <div class="logo-wrap">
+      <img src="heartland-logo.png" alt="Heartland Medical Care Logo" class="logo">
+    </div>
 
-    <div id="headerText">
-      <h1>Heartland Medical Care</h1>
-      <div id="slogan">Compassion in Every Heartbeat</div>
-      <div id="dateLine"><span id="todayDate"></span></div>
+    <div class="brand-wrap">
+      <h1 class="company-name">Heartland Medical Care</h1>
+      <p class="slogan">Compassion in Every Heartbeat</p>
+    </div>
+
+    <div class="date-wrap">
+      <span id="todayDate"></span>
     </div>
   </div>
 
-  <!-- Form Title Bar -->
-  <div id="titleBar">
+  <!-- TITLE BAR -->
+  <div class="title-bar">
     <h2>Patient Registration Form</h2>
-    <p>Make sure you fill all the questions before submission</p>
   </div>
 
-  <!-- Main Form Panel -->
-  <div id="formPanel">
+  <!-- FORM PANEL -->
+  <div class="form-panel">
+    <h3 class="section-title">Patient Information</h3>
+
     <form action="thankyou.html">
+      <table class="form-table">
 
-      <table class="formTable">
         <tr>
-          <td><label for="firstName">First Name</label></td>
-          <td><input type="text" id="firstName" name="firstName" maxlength="30" required></td>
+          <td>First Name</td>
+          <td><input type="text" name="firstName" maxlength="30" required></td>
 
-          <td class="spacer"></td>
+          <td>Middle Initial</td>
+          <td><input type="text" name="middleInit" maxlength="1"></td>
 
-          <td><label for="middleInit">Middle Name Initial</label></td>
-          <td><input type="text" id="middleInit" name="middleInit" maxlength="1"></td>
+          <td>Last Name</td>
+          <td><input type="text" name="lastName" maxlength="30" required></td>
         </tr>
 
         <tr>
-          <td><label for="lastName">Last Name</label></td>
-          <td><input type="text" id="lastName" name="lastName" maxlength="30" required></td>
+          <td>Date (MM/DD/YYYY)</td>
+          <td><input type="text" name="dob" placeholder="MM/DD/YYYY" required></td>
+
+          <td>Sex</td>
+          <td colspan="3">
+            <input type="radio" name="sex" value="Male"> Male
+            <input type="radio" name="sex" value="Female"> Female
+            <input type="radio" name="sex" value="Other"> Other
+          </td>
         </tr>
+
+        <tr>
+          <td>Social Security</td>
+          <td colspan="5">
+            <input type="password" name="ssn" maxlength="11" placeholder="XXX-XX-XXXX">
+          </td>
+        </tr>
+
+        <tr>
+          <td>Race</td>
+          <td colspan="5">
+            <input type="checkbox" name="race" value="White"> White
+            <input type="checkbox" name="race" value="Black"> Black
+            <input type="checkbox" name="race" value="Asian"> Asian
+            <input type="checkbox" name="race" value="Hispanic"> Hispanic
+            <input type="checkbox" name="race" value="Other"> Other
+          </td>
+        </tr>
+
+        <tr>
+          <td>Ethnicity</td>
+          <td colspan="5">
+            <input type="checkbox" name="ethnicity" value="Non-Hispanic"> Non-Hispanic
+            <input type="checkbox" name="ethnicity" value="Hispanic"> Hispanic
+          </td>
+        </tr>
+
+        <tr>
+          <td>Address</td>
+          <td colspan="5">
+            <input type="text" name="address" maxlength="30" style="width: 400px;">
+          </td>
+        </tr>
+
+        <tr>
+          <td>City</td>
+          <td><input type="text" name="city" maxlength="30"></td>
+
+          <td>State</td>
+          <td>
+            <select name="state">
+              <option value="">Select</option>
+              <option>TX</option>
+              <option>CA</option>
+              <option>NY</option>
+              <option>FL</option>
+              <option>IL</option>
+              <option>WA</option>
+              <option>AZ</option>
+              <option>CO</option>
+              <option>NC</option>
+              <option>GA</option>
+            </select>
+          </td>
+
+          <td>Zip Code</td>
+          <td><input type="text" name="zip" pattern="[0-9]{5,10}"></td>
+        </tr>
+
+        <tr>
+          <td>Email</td>
+          <td><input type="email" name="email" required></td>
+
+          <td>Phone</td>
+          <td colspan="3">
+            <input type="tel"
+                   name="phone"
+                   placeholder="(123) 456-7890"
+                   pattern="\(\d{3}\) \d{3}-\d{4}">
+          </td>
+        </tr>
+
       </table>
 
-      <!-- Bottom Buttons -->
-      <div id="buttonRow">
-        <input type="reset" value="Reset" class="btn btnReset">
-        <input type="submit" value="Submit" class="btn btnSubmit">
+      <br><br>
+
+      <div class="button-row">
+        <input type="reset" value="Reset" class="btn">
+        <input type="submit" value="Submit" class="btn">
       </div>
 
     </form>
