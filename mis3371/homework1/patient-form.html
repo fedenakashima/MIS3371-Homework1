@@ -2,7 +2,7 @@
 Program name: patient-form.html
 Author: Federica Nakashima
 Date created: 2026-01-25
-Date last edited: 2026-02-24 at 2:00 PM
+Date last edited: 2026-02-25 at 11:00 AM
 Version: 1.0
 Description: Patient registration form for MIS 3371 Homework 1.
 -->
@@ -184,6 +184,71 @@ Description: Patient registration form for MIS 3371 Homework 1.
         </tr>
 
       </table>
+
+      <br><br>
+
+<h3 class="section-title">Emergency Contact Information</h3>
+
+<table class="form-table">
+
+  <tr>
+    <td>First Name</td>
+    <td><input type="text" name="emgFirstName" maxlength="30"></td>
+
+    <td>Middle Initial</td>
+    <td><input type="text" name="emgMiddleInit" maxlength="1"></td>
+
+    <td>Last Name</td>
+    <td><input type="text" name="emgLastName" maxlength="30"></td>
+  </tr>
+
+  <tr>
+    <td>Relationship to Patient</td>
+    <td colspan="5">
+      <input type="text" name="relationship" maxlength="30">
+    </td>
+  </tr>
+
+  <tr>
+    <td>Address</td>
+    <td colspan="5">
+      <input type="text" name="emgAddress" maxlength="30" style="width:400px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td>City</td>
+    <td><input type="text" name="emgCity" maxlength="30"></td>
+
+    <td>State</td>
+    <td>
+      <select name="emgState">
+        <option value="">Select</option>
+        <option>TX</option>
+        <option>CA</option>
+        <option>NY</option>
+        <option>FL</option>
+      </select>
+    </td>
+
+    <td>Zip Code</td>
+    <td><input type="text" name="emgZip" pattern="[0-9]{5,10}"></td>
+  </tr>
+
+  <tr>
+    <td>Email</td>
+    <td><input type="email" name="emgEmail"></td>
+
+    <td>Phone</td>
+    <td colspan="3">
+      <input type="tel"
+             name="emgPhone"
+             placeholder="(123) 456-7890"
+             pattern="\(\d{3}\) \d{3}-\d{4}">
+    </td>
+  </tr>
+
+</table>
 
       <br><br>
 
