@@ -203,9 +203,20 @@ Description: Patient registration form for MIS 3371 Homework 1.
 
   <tr>
     <td>Relationship to Patient</td>
-    <td colspan="5">
-      <input type="text" name="relationship" maxlength="30">
-    </td>
+<td colspan="5">
+  <select name="relationship" required>
+    <option value="">Select</option>
+    <option value="Spouse">Spouse</option>
+    <option value="Parent">Parent</option>
+    <option value="Child">Child</option>
+    <option value="Sibling">Sibling</option>
+    <option value="Relative">Relative</option>
+    <option value="Friend">Friend</option>
+    <option value="Guardian">Guardian</option>
+    <option value="Caregiver">Caregiver</option>
+    <option value="Other">Other</option>
+  </select>
+</td>
   </tr>
 
   <tr>
