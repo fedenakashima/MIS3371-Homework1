@@ -2,7 +2,7 @@
 Program name: style.css
 Author: Federica Nakashima
 Date created: 2026-01-25
-Date last edited: 2026-02-24 at 2:00 PM
+Date last edited: 2026-02-25 at 11:00 AM
 Version: 1.0
 Description: CSS styling for MIS 3371 Homework 1 patient form.
 */
@@ -94,16 +94,16 @@ body{
   color: #000;
 }
 
-.form-table td{
+.form-table td {
   vertical-align: middle;
   font-weight: 600;
+  white-space: nowrap;
 }
 
-.form-table input,
-.form-table select{
-  padding: 6px 8px;
-  border-radius: 6px;
-  border: 1px solid #cfcfcf;
+.form-table td:nth-child(1),
+.form-table td:nth-child(3),
+.form-table td:nth-child(5){
+  width: 150px;
 }
 
 /* make small fields look better */
