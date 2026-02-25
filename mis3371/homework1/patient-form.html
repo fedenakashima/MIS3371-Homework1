@@ -252,6 +252,41 @@ Description: Patient registration form for MIS 3371 Homework 1.
 
       <br><br>
 
+<h3 class="section-title">Today's Visit</h3>
+
+<table class="form-table">
+
+  <tr>
+    <td>Reason for Visit</td>
+    <td colspan="5">
+      <textarea name="reason" rows="3" style="width:500px;"></textarea>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Have you experienced chest pain?</td>
+    <td colspan="2">
+      <input type="checkbox" name="chestPain" value="Yes"> Yes
+      <input type="checkbox" name="chestPain" value="No"> No
+    </td>
+
+    <td>Rate it (1–10)</td>
+    <td colspan="2">
+      <input type="range"
+             name="painLevel"
+             min="1"
+             max="10"
+             step="1"
+             value="1"
+             oninput="painOutput.value = painLevel.value">
+      <output name="painOutput">1</output>
+    </td>
+  </tr>
+
+</table>
+      
+      <br><br>
+
       <div class="button-row">
         <input type="reset" value="Reset" class="btn">
         <input type="submit" value="Submit" class="btn">
