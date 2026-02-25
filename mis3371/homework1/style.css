@@ -87,6 +87,7 @@ body{
 .form-table{
   width: 100%;
   max-width: 900px;
+  margin: 0 auto;         
   border-collapse: separate;
   border-spacing: 14px 16px;
   color: #000;
@@ -114,7 +115,7 @@ body{
   display: flex;
   justify-content: space-between;
   max-width: 420px;
-  margin-top: 30px;
+  margin: 30px auto 0;
 }
 
 .btn{
