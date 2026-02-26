@@ -41,315 +41,348 @@ Description: Patient registration form for MIS 3371 Homework 1.
 
   <!-- FORM PANEL -->
   <div class="form-panel">
-    <h3 class="section-title">Patient Information</h3>
 
-    <form action="thankyou.html">
+    <!-- centered container so titles + tables align -->
+    <div class="form-container">
+
+      <form action="thankyou.html">
+
+        <!-- ===================== PATIENT INFORMATION ===================== -->
+        <h3 class="section-title">Patient Information</h3>
+
+        <table class="form-table">
+          <tr>
+            <td>First Name</td>
+            <td><input type="text" name="firstName" maxlength="30" required></td>
+
+            <td>Middle Initial</td>
+            <td><input type="text" name="middleInit" maxlength="1"></td>
+
+            <td>Last Name</td>
+            <td><input type="text" name="lastName" maxlength="30" required></td>
+          </tr>
+
+          <tr>
+            <td>Date (MM/DD/YYYY)</td>
+            <td><input type="text" name="dob" placeholder="MM/DD/YYYY" required></td>
+
+            <td>Sex</td>
+            <td colspan="3" class="inline-options">
+              <label><input type="radio" name="sex" value="Male"> Male</label>
+              <label><input type="radio" name="sex" value="Female"> Female</label>
+              <label><input type="radio" name="sex" value="Other"> Other</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Social Security</td>
+            <td colspan="5">
+              <input type="password" name="ssn" maxlength="11" placeholder="XXX-XX-XXXX">
+            </td>
+          </tr>
+
+          <tr>
+            <td>Race</td>
+            <td colspan="5" class="inline-options">
+              <label><input type="checkbox" name="race" value="White"> White</label>
+              <label><input type="checkbox" name="race" value="Black/African American"> Black/African American</label>
+              <label><input type="checkbox" name="race" value="Asian"> Asian</label>
+              <label><input type="checkbox" name="race" value="Native Hawaiian/Other Pacific Islander"> Native Hawaiian/Other Pacific Islander</label>
+              <label><input type="checkbox" name="race" value="Other"> Other</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Ethnicity</td>
+            <td colspan="5" class="inline-options">
+              <label><input type="radio" name="ethnicity" value="Non-Hispanic"> Non-Hispanic</label>
+              <label><input type="radio" name="ethnicity" value="Hispanic"> Hispanic</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Address</td>
+            <td colspan="5">
+              <input type="text" name="address" maxlength="30" class="wide-input">
+            </td>
+          </tr>
+
+          <tr>
+            <td>City</td>
+            <td><input type="text" name="city" maxlength="30"></td>
+
+            <td>State</td>
+            <td>
+              <select name="state">
+                <option value="">Select</option>
+                <option>AL|Alabama</option>
+                <option>AK|Alaska</option>
+                <option>AZ|Arizona</option>
+                <option>AR|Arkansas</option>
+                <option>CA|California</option>
+                <option>CO|Colorado</option>
+                <option>CT|Connecticut</option>
+                <option>DE|Delaware</option>
+                <option>FL|Florida</option>
+                <option>GA|Georgia</option>
+                <option>HI|Hawaii</option>
+                <option>ID|Idaho</option>
+                <option>IL|Illinois</option>
+                <option>IN|Indiana</option>
+                <option>IA|Iowa</option>
+                <option>KS|Kansas</option>
+                <option>KY|Kentucky</option>
+                <option>LA|Louisiana</option>
+                <option>ME|Maine</option>
+                <option>MD|Maryland</option>
+                <option>MA|Massachusetts</option>
+                <option>MI|Michigan</option>
+                <option>MN|Minnesota</option>
+                <option>MS|Mississippi</option>
+                <option>MO|Missouri</option>
+                <option>MT|Montana</option>
+                <option>NE|Nebraska</option>
+                <option>NV|Nevada</option>
+                <option>NH|New Hampshire</option>
+                <option>NJ|New Jersey</option>
+                <option>NM|New Mexico</option>
+                <option>NY|New York</option>
+                <option>NC|North Carolina</option>
+                <option>ND|North Dakota</option>
+                <option>OH|Ohio</option>
+                <option>OK|Oklahoma</option>
+                <option>OR|Oregon</option>
+                <option>PA|Pennsylvania</option>
+                <option>RI|Rhode Island</option>
+                <option>SC|South Carolina</option>
+                <option>SD|South Dakota</option>
+                <option>TN|Tennessee</option>
+                <option>TX|Texas</option>
+                <option>UT|Utah</option>
+                <option>VT|Vermont</option>
+                <option>VA|Virginia</option>
+                <option>WA|Washington</option>
+                <option>WV|West Virginia</option>
+                <option>WI|Wisconsin</option>
+                <option>WY|Wyoming</option>
+                <option>DC|District of Columbia</option>
+                <option>PR|Puerto Rico</option>
+              </select>
+            </td>
+
+            <td>Zip Code</td>
+            <td><input type="text" name="zip" pattern="[0-9]{5,10}"></td>
+          </tr>
+
+          <tr>
+            <td>Email</td>
+            <td><input type="email" name="email" required></td>
+
+            <td>Phone</td>
+            <td colspan="3">
+              <input type="tel" name="phone" placeholder="(123) 456-7890" pattern="\(\d{3}\) \d{3}-\d{4}">
+            </td>
+          </tr>
+        </table>
+
+        <!-- ===================== EMERGENCY CONTACT ===================== -->
+        <h3 class="section-title">Emergency Contact Information</h3>
+
+        <table class="form-table">
+          <tr>
+            <td>First Name</td>
+            <td><input type="text" name="emgFirstName" maxlength="30"></td>
+
+            <td>Middle Initial</td>
+            <td><input type="text" name="emgMiddleInit" maxlength="1"></td>
+
+            <td>Last Name</td>
+            <td><input type="text" name="emgLastName" maxlength="30"></td>
+          </tr>
+
+          <tr>
+            <td>Relationship to Patient</td>
+            <td colspan="5">
+              <select name="relationship" required>
+                <option value="">Select</option>
+                <option value="Spouse">Spouse</option>
+                <option value="Parent">Parent (mother/father)</option>
+                <option value="Child">Child (son/daughter)</option>
+                <option value="Sibling">Sibling (brother/sister)</option>
+                <option value="Friend">Friend</option>
+                <option value="Guardian">Guardian</option>
+                <option value="Partner">Significant other/Partner</option>
+                <option value="Other">Other</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Address</td>
+            <td colspan="5">
+              <input type="text" name="emgAddress" maxlength="30" class="wide-input">
+            </td>
+          </tr>
+
+          <tr>
+            <td>City</td>
+            <td><input type="text" name="emgCity" maxlength="30"></td>
+
+            <td>State</td>
+            <td>
+              <!-- IMPORTANT: emgState (not "state") -->
+              <select name="emgState">
+                <option value="">Select</option>
+                <option>AL|Alabama</option>
+                <option>AK|Alaska</option>
+                <option>AZ|Arizona</option>
+                <option>AR|Arkansas</option>
+                <option>CA|California</option>
+                <option>CO|Colorado</option>
+                <option>CT|Connecticut</option>
+                <option>DE|Delaware</option>
+                <option>FL|Florida</option>
+                <option>GA|Georgia</option>
+                <option>HI|Hawaii</option>
+                <option>ID|Idaho</option>
+                <option>IL|Illinois</option>
+                <option>IN|Indiana</option>
+                <option>IA|Iowa</option>
+                <option>KS|Kansas</option>
+                <option>KY|Kentucky</option>
+                <option>LA|Louisiana</option>
+                <option>ME|Maine</option>
+                <option>MD|Maryland</option>
+                <option>MA|Massachusetts</option>
+                <option>MI|Michigan</option>
+                <option>MN|Minnesota</option>
+                <option>MS|Mississippi</option>
+                <option>MO|Missouri</option>
+                <option>MT|Montana</option>
+                <option>NE|Nebraska</option>
+                <option>NV|Nevada</option>
+                <option>NH|New Hampshire</option>
+                <option>NJ|New Jersey</option>
+                <option>NM|New Mexico</option>
+                <option>NY|New York</option>
+                <option>NC|North Carolina</option>
+                <option>ND|North Dakota</option>
+                <option>OH|Ohio</option>
+                <option>OK|Oklahoma</option>
+                <option>OR|Oregon</option>
+                <option>PA|Pennsylvania</option>
+                <option>RI|Rhode Island</option>
+                <option>SC|South Carolina</option>
+                <option>SD|South Dakota</option>
+                <option>TN|Tennessee</option>
+                <option>TX|Texas</option>
+                <option>UT|Utah</option>
+                <option>VT|Vermont</option>
+                <option>VA|Virginia</option>
+                <option>WA|Washington</option>
+                <option>WV|West Virginia</option>
+                <option>WI|Wisconsin</option>
+                <option>WY|Wyoming</option>
+                <option>DC|District of Columbia</option>
+                <option>PR|Puerto Rico</option>
+              </select>
+            </td>
+
+            <td>Zip Code</td>
+            <td><input type="text" name="emgZip" pattern="[0-9]{5,10}"></td>
+          </tr>
+
+          <tr>
+            <td>Email</td>
+            <td><input type="email" name="emgEmail"></td>
+
+            <td>Phone</td>
+            <td colspan="3">
+              <input type="tel" name="emgPhone" placeholder="(123) 456-7890" pattern="\(\d{3}\) \d{3}-\d{4}">
+            </td>
+          </tr>
+        </table>
+
+        <!-- ===================== TODAY'S VISIT ===================== -->
+        <h3 class="section-title">Today's Visit</h3>
+
+        <table class="form-table">
+          <tr>
+            <td>Reason for Visit</td>
+            <td colspan="5">
+              <textarea name="reason" rows="3" class="wide-textarea"></textarea>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Have you experienced chest pain?</td>
+            <td colspan="2" class="inline-options">
+              <label><input type="radio" name="chestPain" value="Yes"> Yes</label>
+              <label><input type="radio" name="chestPain" value="No"> No</label>
+            </td>
+
+            <td>How would you rate it? (1–10)</td>
+            <td colspan="2">
+              <input type="range" id="painLevel" name="painLevel" min="1" max="10" step="1" value="1"
+                     oninput="painOutput.value = painLevel.value">
+              <output id="painOutput">1</output>
+            </td>
+          </tr>
+        </table>
+
+        <div class="button-row">
+          <input type="reset" value="Reset" class="btn">
+          <input type="submit" value="Submit" class="btn">
+        </div>
+
+      </form>
+      <!-- ===================== PATIENT PORTAL ACCOUNT ===================== -->
+
+      <h3 class="section-title">Patient Portal Account Setup</h3>
+
       <table class="form-table">
 
-        <tr>
-          <td>First Name</td>
-          <td><input type="text" name="firstName" maxlength="30" required></td>
-
-          <td>Middle Initial</td>
-          <td><input type="text" name="middleInit" maxlength="1"></td>
-
-          <td>Last Name</td>
-          <td><input type="text" name="lastName" maxlength="30" required></td>
-        </tr>
-
-        <tr>
-          <td>Date (MM/DD/YYYY)</td>
-          <td><input type="text" name="dob" placeholder="MM/DD/YYYY" required></td>
-
-          <td>Sex</td>
-          <td colspan="3">
-            <input type="radio" name="sex" value="Male"> Male
-            <input type="radio" name="sex" value="Female"> Female
-            <input type="radio" name="sex" value="Other"> Other
-          </td>
-        </tr>
-
-        <tr>
-          <td>Social Security</td>
-          <td colspan="5">
-            <input type="password" name="ssn" maxlength="11" placeholder="XXX-XX-XXXX">
-          </td>
-        </tr>
-
-        <tr>
-          <td>Race</td>
-          <td colspan="5">
-            <input type="checkbox" name="race" value="White"> White
-            <input type="checkbox" name="race" value="Black/African American"> Black/African American
-            <input type="checkbox" name="race" value="Asian"> Asian
-            <input type="checkbox" name="race" value="Native Hawaiian/Other Pacific Islander"> Native Hawaiian/Other Pacific Islander
-            <input type="checkbox" name="race" value="Other"> Other
-          </td>
-        </tr>
-
-        <tr>
-          <td>Ethnicity</td>
-          <td colspan="5">
-            <input type="radio" name="ethnicity" value="Non-Hispanic"> Non-Hispanic
-            <input type="radio" name="ethnicity" value="Hispanic"> Hispanic
-          </td>
-        </tr>
-
-        <tr>
-          <td>Address</td>
-          <td colspan="5">
-            <input type="text" name="address" maxlength="30" style="width: 400px;">
-          </td>
-        </tr>
-
-        <tr>
-          <td>City</td>
-          <td><input type="text" name="city" maxlength="30"></td>
-          <td>State</td>
+          <tr>
+          <td>Desired User ID</td>
           <td>
-            <select name="state">
-              <option value="">Select</option>
-              <option>AL|Alabama</option>
-              <option>AK|Alaska</option>
-              <option>AZ|Arizona</option>
-              <option>AR|Arkansas</option>
-              <option>CA|California</option>
-              <option>CO|Colorado</option>
-              <option>CT|Connecticut</option>
-              <option>DE|Delaware</option>
-              <option>FL|Florida</option>
-              <option>GA|Georgia</option>
-              <option>HI|Hawaii</option>
-              <option>ID|Idaho</option>
-              <option>IL|Illinois</option>
-              <option>IN|Indiana</option>
-              <option>IA|Iowa</option>
-              <option>KS|Kansas</option>
-              <option>KY|Kentucky</option>
-              <option>LA|Louisiana</option>
-              <option>ME|Maine</option>
-              <option>MD|Maryland</option>
-              <option>MA|Massachusetts</option>
-              <option>MI|Michigan</option>
-              <option>MN|Minnesota</option>
-              <option>MS|Mississippi</option>
-              <option>MO|Missouri</option>
-              <option>MT|Montana</option>
-              <option>NE|Nebraska</option>
-              <option>NV|Nevada</option>
-              <option>NH|New Hampshire</option>
-              <option>NJ|New Jersey</option>
-              <option>NM|New Mexico</option>
-              <option>NY|New York</option>
-              <option>NC|North Carolina</option>
-              <option>ND|North Dakota</option>
-              <option>OH|Ohio</option>
-              <option>OK|Oklahoma</option>
-              <option>OR|Oregon</option>
-              <option>PA|Pennsylvania</option>
-              <option>RI|Rhode Island</option>
-              <option>SC|South Carolina</option>
-              <option>SD|South Dakota</option>
-              <option>TN|Tennessee</option>
-              <option>TX|Texas</option>
-              <option>UT|Utah</option>
-              <option>VT|Vermont</option>
-              <option>VA|Virginia</option>
-              <option>WA|Washington</option>
-              <option>WV|West Virginia</option>
-              <option>WI|Wisconsin</option>
-              <option>WY|Wyoming</option>
-              <option>DC|District of Columbia</option>
-              <option>PR|Puerto Rico</option>
-            </select>
+            <input type="text"
+                   name="userID"
+                   maxlength="20"
+                   required>
           </td>
 
-          <td>Zip Code</td>
-          <td><input type="text" name="zip" pattern="[0-9]{5,10}"></td>
+          <td>Email (Portal Login)</td>
+          <td>
+            <input type="email"
+                   name="portalEmail"
+                 required>
+          </td>
         </tr>
 
         <tr>
-          <td>Email</td>
-          <td><input type="email" name="email" required></td>
+          <td>Password</td>
+          <td>
+            <input type="password"
+                   name="password"
+                   maxlength="20"
+                   required>
+          </td>
 
-          <td>Phone</td>
-          <td colspan="3">
-            <input type="tel"
-                   name="phone"
-                   placeholder="(123) 456-7890"
-                   pattern="\(\d{3}\) \d{3}-\d{4}">
+          <td>Re-enter Password</td>
+          <td>
+            <input type="password"
+                   name="confirmPassword"
+                   maxlength="20"
+                   required>
           </td>
         </tr>
-
+        
       </table>
 
-      <br><br>
+<br>
 
-<h3 class="section-title">Emergency Contact Information</h3>
-
-<table class="form-table">
-
-  <tr>
-    <td>First Name</td>
-    <td><input type="text" name="emgFirstName" maxlength="30"></td>
-
-    <td>Middle Initial</td>
-    <td><input type="text" name="emgMiddleInit" maxlength="1"></td>
-
-    <td>Last Name</td>
-    <td><input type="text" name="emgLastName" maxlength="30"></td>
-  </tr>
-
-  <tr>
-    <td>Relationship to Patient</td>
-<td colspan="5">
-  <select name="relationship" required>
-    <option value="">Select</option>
-    <option value="Spouse">Spouse</option>
-    <option value="Parent">Parent (mother/father)</option>
-    <option value="Child">Child (son/daughter)</option>
-    <option value="Sibling">Sibling (brother/sister)</option>
-    <option value="Friend">Friend</option>
-    <option value="Guardian">Guardian</option>
-    <option value="Partner">Significant other/Partner</option>
-    <option value="Other">Other</option>
-  </select>
-</td>
-  </tr>
-
-  <tr>
-    <td>Address</td>
-    <td colspan="5">
-      <input type="text" name="emgAddress" maxlength="30" style="width:400px;">
-    </td>
-  </tr>
-
-  <tr>
-    <td>City</td>
-    <td><input type="text" name="emgCity" maxlength="30"></td>
-    
-    <td>State</td>
-    <td>
-     <select name="state">
-              <option value="">Select</option>
-                  <option>AL|Alabama</option>
-                  <option>AK|Alaska</option>
-                  <option>AZ|Arizona</option>
-                  <option>AR|Arkansas</option>
-                  <option>CA|California</option>
-                  <option>CO|Colorado</option>
-                  <option>CT|Connecticut</option>
-                  <option>DE|Delaware</option>
-                  <option>FL|Florida</option>
-                  <option>GA|Georgia</option>
-              <option>HI|Hawaii</option>
-              <option>ID|Idaho</option>
-              <option>IL|Illinois</option>
-              <option>IN|Indiana</option>
-              <option>IA|Iowa</option>
-              <option>KS|Kansas</option>
-              <option>KY|Kentucky</option>
-              <option>LA|Louisiana</option>
-              <option>ME|Maine</option>
-              <option>MD|Maryland</option>
-              <option>MA|Massachusetts</option>
-              <option>MI|Michigan</option>
-              <option>MN|Minnesota</option>
-              <option>MS|Mississippi</option>
-              <option>MO|Missouri</option>
-              <option>MT|Montana</option>
-              <option>NE|Nebraska</option>
-              <option>NV|Nevada</option>
-              <option>NH|New Hampshire</option>
-              <option>NJ|New Jersey</option>
-              <option>NM|New Mexico</option>
-              <option>NY|New York</option>
-              <option>NC|North Carolina</option>
-              <option>ND|North Dakota</option>
-              <option>OH|Ohio</option>
-              <option>OK|Oklahoma</option>
-              <option>OR|Oregon</option>
-              <option>PA|Pennsylvania</option>
-              <option>RI|Rhode Island</option>
-              <option>SC|South Carolina</option>
-              <option>SD|South Dakota</option>
-              <option>TN|Tennessee</option>
-              <option>TX|Texas</option>
-              <option>UT|Utah</option>
-              <option>VT|Vermont</option>
-              <option>VA|Virginia</option>
-              <option>WA|Washington</option>
-              <option>WV|West Virginia</option>
-              <option>WI|Wisconsin</option>
-              <option>WY|Wyoming</option>
-              <option>DC|District of Columbia</option>
-              <option>PR|Puerto Rico</option>
-            </select>
-    </td>
-
-    <td>Zip Code</td>
-    <td><input type="text" name="emgZip" pattern="[0-9]{5,10}"></td>
-  </tr>
-
-  <tr>
-    <td>Email</td>
-    <td><input type="email" name="emgEmail"></td>
-
-    <td>Phone</td>
-    <td colspan="3">
-      <input type="tel"
-             name="emgPhone"
-             placeholder="(123) 456-7890"
-             pattern="\(\d{3}\) \d{3}-\d{4}">
-    </td>
-  </tr>
-
-</table>
-
-      <br><br>
-
-<h3 class="section-title">Today's Visit</h3>
-
-<table class="form-table">
-
-  <tr>
-    <td>Reason for Visit</td>
-    <td colspan="5">
-      <textarea name="reason" rows="3" style="width:500px;"></textarea>
-    </td>
-  </tr>
-
-  <tr>
-    <td>Have you experienced chest pain?</td>
-    <td colspan="2">
-      <input type="checkbox" name="chestPain" value="Yes"> Yes
-      <input type="checkbox" name="chestPain" value="No"> No
-    </td>
-
-    <td>How would you rate it? (1–10)</td>
-    <td colspan="2">
-      <input type="range"
-             name="painLevel"
-             min="1"
-             max="10"
-             step="1"
-             value="1"
-             oninput="painOutput.value = painLevel.value">
-      <output name="painOutput">1</output>
-    </td>
-  </tr>
-
-</table>
-      
-      <br><br>
-
-      <div class="button-row">
-        <input type="reset" value="Reset" class="btn">
-        <input type="submit" value="Submit" class="btn">
-      </div>
-
-    </form>
-  </div>
+    </div><!-- /form-container -->
+  </div><!-- /form-panel -->
 
   <script>
     const d = new Date();
