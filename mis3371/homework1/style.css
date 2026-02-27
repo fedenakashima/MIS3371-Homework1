@@ -18,7 +18,7 @@ body{
 .top-banner{
   background: #ffffff;
   display: grid;
-  grid-template-columns: 170px 1fr 220px; /* logo | title | date */
+  grid-template-columns: 170px 1fr;
   align-items: center;
   padding: 18px 22px;
   border-bottom: 2px solid #cfcfcf;
@@ -60,6 +60,13 @@ body{
   background: #6fa9ad; /* teal */
   text-align: center;
   padding: 14px 10px;
+}
+
+.form-date{
+  margin: 6px 0 0 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
 }
 
 .title-bar h2{
