@@ -73,13 +73,17 @@ body{
 /* ---------- FORM PANEL ---------- */
 .form-panel{
   background: #6fa9ad;
-  padding: 30px 25px 50px 25px;
-  min-height: 420px;
+  padding: 30px 0 50px 0;
+}
+
+.form-container{
+  max-width: 1000px;   /* controla el ancho total */
+  margin: 0 auto;      /* esto lo centra */
 }
 
 .section-title{
   text-align: center;
-  margin: 3px 80px 20px 0;
+  margin: 20px 0;
   color: #7a3a3a;
   font-size: 22px;
   font-weight: 800;
