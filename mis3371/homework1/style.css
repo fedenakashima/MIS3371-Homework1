@@ -111,6 +111,10 @@ body{
   width: 60px;
 }
 
+input[type="password"]{
+  width: 200px;
+}
+
 /* ---------- BUTTONS ---------- */
 .button-row{
   display: flex;
