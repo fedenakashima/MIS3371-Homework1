@@ -77,9 +77,9 @@ body{
 }
 
 .section-title{
-  text-align: center;  
-  margin: 35px 0 20px 0;
-  color: #ffffff;
+  text-align: left;  
+  margin: 200px 0 20px 0;
+  color: #7a3a3a;
   font-size: 22px;
   font-weight: 800;
 }
