@@ -18,7 +18,7 @@ body{
 .top-banner{
   background: #ffffff;
   display: grid;
-  grid-template-columns: 170px 1fr;
+  grid-template-columns: 170px 1fr; /* logo | title */
   align-items: center;
   padding: 18px 22px;
   border-bottom: 2px solid #cfcfcf;
@@ -48,12 +48,6 @@ body{
   color: #7a3a3a;    /* maroon-ish */
 }
 
-.date-wrap{
-  text-align: right;
-  font-weight: 800;
-  font-size: 18px;
-  color: #000;
-}
 
 /* ---------- TITLE BAR ---------- */
 .title-bar{
