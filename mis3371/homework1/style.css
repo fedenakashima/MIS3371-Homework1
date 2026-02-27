@@ -77,10 +77,10 @@ body{
 }
 
 .section-title{
-  margin: 0 0 15px 0;
+  text-align: center;  
+  margin: 35px 0 20px 0;
   color: #ffffff;
-  font-size: 20px;
-  margin: 0 auto;
+  font-size: 22px;
   font-weight: 800;
 }
 
