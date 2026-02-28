@@ -3,8 +3,7 @@ Program name: style.css
 Author: Federica Nakashima
 Date created: 2026-01-25
 Date last edited: 2026-02-27 at 8:00 PM
-Version: 1.0
-Description: CSS styling for MIS 3371 Homework 1 patient form.
+Patient registration form for MIS 3371 Homework 1.
 */
 
 body{
@@ -49,7 +48,6 @@ body{
   color: #7a3a3a;
 }
 
-/* Top-right info */
 .info-wrap{
   text-align: right;
   font-size: 14px;
@@ -81,7 +79,7 @@ body{
   color: #ffffff;
 }
 
-/* ---------- FORM PANEL ---------- */
+/* ---------- PANEL ---------- */
 .form-panel{
   background: #6fa9ad;
   padding: 30px 0 50px 0;
@@ -111,7 +109,6 @@ body{
   font-weight: 800;
 }
 
-/* ---------- TABLE FORM LAYOUT ---------- */
 .form-table{
   width: 100%;
   max-width: 900px;
@@ -127,14 +124,12 @@ body{
   white-space: nowrap;
 }
 
-/* label columns sizing */
 .form-table td:nth-child(1),
 .form-table td:nth-child(3),
 .form-table td:nth-child(5){
   width: 150px;
 }
 
-/* Inputs */
 .form-table input,
 .form-table select,
 .form-table textarea{
@@ -143,7 +138,6 @@ body{
   border: 1px solid #cfcfcf;
 }
 
-/* middle initial short everywhere */
 .mi{
   width: 60px;
 }
@@ -160,7 +154,6 @@ body{
   resize: vertical;
 }
 
-/* nice spacing for checkbox/radio lines */
 .inline-options label{
   margin-right: 14px;
 }
