@@ -18,7 +18,7 @@ body{
 .top-banner{
   background: #ffffff;
   display: grid;
-  grid-template-columns: 170px 1fr 260px; /* logo | brand | info */
+  grid-template-columns: 170px 1fr 260px;
   align-items: center;
   gap: 10px;
   padding: 18px 22px;
@@ -106,7 +106,7 @@ body{
 
 /* ---------- SECTION TITLES ---------- */
 .section-title{
-  text-align: center;
+  text-align: left;
   margin: 20px 0;
   color: #7a3a3a;
   font-size: 22px;
