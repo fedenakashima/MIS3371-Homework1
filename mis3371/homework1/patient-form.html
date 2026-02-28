@@ -332,31 +332,30 @@ Description: Patient registration form for MIS 3371 Homework 1.
             </tr>
 
             <tr>
-              <td>Have you experienced chest pain?</td>
+              <td>Have you experienced chest pain in the past days?</td>
               <td colspan="2" class="inline-options">
                 <label><input type="radio" name="chestPain" value="Yes" required> Yes</label>
                 <label><input type="radio" name="chestPain" value="No"> No</label>
               </td>
-
-              <td>Do you have insurance?</td>
-              <td colspan="2" class="inline-options">
-                <label><input type="radio" name="insurance" value="Yes" required> Yes</label>
-                <label><input type="radio" name="insurance" value="No"> No</label>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Vaccinated (Flu/COVID)</td>
-              <td colspan="2" class="inline-options">
-                <label><input type="radio" name="vaccinated" value="Yes" required> Yes</label>
-                <label><input type="radio" name="vaccinated" value="No"> No</label>
-              </td>
-
+              
               <td>Rate your pain (1–10)</td>
               <td colspan="2">
                 <input type="range" id="painLevel" name="painLevel" min="1" max="10" step="1" value="1"
                        oninput="document.getElementById('painOutput').value = this.value;">
                 <output id="painOutput">1</output>
+              </td>
+
+            <tr>
+              <td>Do you have insurance?</td>
+              <td colspan="2" class="inline-options">
+                <label><input type="radio" name="insurance" value="Yes" required> Yes</label>
+                <label><input type="radio" name="insurance" value="No"> No</label>
+              </td>
+    
+              <td>Vaccinated (Flu/COVID)</td>
+              <td colspan="2" class="inline-options">
+                <label><input type="radio" name="vaccinated" value="Yes" required> Yes</label>
+                <label><input type="radio" name="vaccinated" value="No"> No</label>
               </td>
             </tr>
           </table>
@@ -384,7 +383,7 @@ Description: Patient registration form for MIS 3371 Homework 1.
 
           <!-- BUTTONS -->
           <div class="button-row">
-            <input type="reset" value="CLEAR AND START OVER" class="btn">
+            <input type="reset" value="Clear" class="btn">
             <input type="submit" value="Submit" class="btn">
           </div>
 
