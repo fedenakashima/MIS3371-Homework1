@@ -11,129 +11,188 @@ body{
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #f3f6f7;
+  background: #0f0f0f;
+  color: #ffffff;
 }
 
-/* ---------- TOP BANNER ---------- */
-.top-banner{
-  background: #ffffff;
+/* ===================== TOP + FOOTER BANNERS ===================== */
+.top-banner,
+.footer-banner{
   display: grid;
-  grid-template-columns: 170px 1fr; /* logo | title */
+  grid-template-columns: 160px 1fr 220px;
   align-items: center;
-  padding: 18px 22px;
-  border-bottom: 2px solid #cfcfcf;
+  gap: 18px;
+  padding: 20px;
+  background: #0f0f0f;
+}
+
+.banner-box{
+  border: 2px solid #ffffff;
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
 }
 
 .logo{
-  width: 130px;     /* logo size */
+  width: 110px;
   height: auto;
   display: block;
+  margin: 0 auto;
 }
 
-.brand-wrap{
+.banner-center{
   text-align: center;
 }
 
-.company-name{
-  margin: 0;
-  font-size: 54px;   /* big title */
-  font-weight: 900;
-  color: #000;
+.banner-title{
+  border: 2px solid #ffffff;
+  padding: 14px 10px;
+  font-size: 44px;
+  font-weight: 800;
 }
 
-.slogan{
-  margin: 8px 0 0 0;
+.banner-slogan{
+  border: 2px solid #ffffff;
+  margin-top: 12px;
+  padding: 10px;
   font-size: 22px;
   font-weight: 700;
-  color: #7a3a3a;    /* maroon-ish */
 }
 
+.info-title{
+  font-weight: 800;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
 
-/* ---------- TITLE BAR ---------- */
-.title-bar{
-  background: #6fa9ad; /* teal */
+.info-text{
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+/* ===================== TITLE + DATE ===================== */
+.page-title-wrap{
   text-align: center;
-  padding: 14px 10px;
+  padding: 18px 10px 8px;
 }
 
-.form-date{
-  margin: 6px 0 0 0;
+.page-title{
+  display: inline-block;
+  border: 2px solid #ffffff;
+  padding: 10px 18px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.page-date{
+  display: inline-block;
+  border: 2px solid #ffffff;
+  padding: 8px 18px;
+  margin-top: 12px;
   font-size: 16px;
   font-weight: 700;
-  color: #ffffff;
 }
 
-.title-bar h2{
-  margin: 0;
-  color: #ffffff;
-  font-size: 28px;
+/* ===================== MAIN PANEL ===================== */
+.main-panel{
+  max-width: 900px;
+  margin: 18px auto 26px;
+  border: 2px solid #ffffff;
+  padding: 22px 20px 28px;
+}
+
+/* each big section box */
+.section-box{
+  border: 2px solid #ffffff;
+  padding: 18px 16px 20px;
+  margin: 18px 0;
+}
+
+.section-heading{
+  display: block;
+  border: 2px solid #ffffff;
+  padding: 10px 12px;
+  font-size: 18px;
   font-weight: 800;
-}
-
-/* ---------- FORM PANEL ---------- */
-.form-panel{
-  background: #6fa9ad;
-  padding: 30px 0 50px 0;
-}
-
-.form-container{
-  max-width: 1000px;   /* controla el ancho total */
-  margin: 0 auto;      /* esto lo centra */
-}
-
-.section-title{
   text-align: center;
-  margin: 20px 0;
-  color: #7a3a3a;
-  font-size: 22px;
-  font-weight: 800;
+  max-width: 520px;
+  margin: 0 auto 18px;
 }
 
-/* ---------- TABLE FORM LAYOUT ---------- */
+/* ===================== TABLE FORM ===================== */
 .form-table{
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;         
   border-collapse: separate;
-  border-spacing: 14px 16px;
-  color: #000;
+  border-spacing: 12px 14px;
+  font-size: 14px;
 }
 
-.form-table td {
+.form-table td{
   vertical-align: middle;
-  font-weight: 600;
   white-space: nowrap;
+  font-weight: 700;
 }
 
-.form-table td:nth-child(1),
-.form-table td:nth-child(3),
-.form-table td:nth-child(5){
-  width: 150px;
+.form-table input,
+.form-table select,
+.form-table textarea{
+  padding: 6px 8px;
+  border: 1px solid #bfbfbf;
+  border-radius: 6px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* make small fields look better */
-.form-table input[name="middleInit"]{
+/* wide helpers */
+.wide-input{
+  width: 95%;
+}
+
+.wide-textarea{
+  width: 95%;
+  min-height: 70px;
+}
+
+/* make initials short everywhere */
+input[name="middleInit"],
+input[name="emgMiddleInit"]{
   width: 60px;
 }
 
-input[type="password"]{
-  width: 200px;
+/* inline options spacing */
+.inline-options label{
+  margin-right: 14px;
+  font-weight: 700;
 }
 
-/* ---------- BUTTONS ---------- */
+/* ===================== BUTTONS ===================== */
 .button-row{
   display: flex;
-  justify-content: space-between;
-  max-width: 420px;
-  margin: 30px auto 0;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 22px;
 }
 
 .btn{
-  background: #8b3a3a;
+  background: transparent;
   color: #ffffff;
-  border: none;
-  padding: 10px 28px;
-  border-radius: 22px;
+  border: 2px solid #ffffff;
+  padding: 12px 26px;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.contact-row{
+  text-align: center;
+  margin-top: 22px;
+}
+
+.btn-outline{
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 10px 20px;
+  border-radius: 10px;
   font-weight: 800;
   cursor: pointer;
 }
