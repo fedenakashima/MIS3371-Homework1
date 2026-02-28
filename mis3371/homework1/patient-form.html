@@ -18,33 +18,42 @@ Description: Patient registration form for MIS 3371 Homework 1.
 
 <body>
 
-  <!-- TOP BANNER -->
-  <div class="top-banner"> </div>
-  <div class="logo-wrap">
+  <!-- ===================== TOP HEADER ===================== -->
+  <div class="top-banner">
+    <div class="banner-box banner-left">
       <img src="heartland-logo.png" alt="Heartland Medical Care Logo" class="logo">
     </div>
 
-    <div class="brand-wrap">
-      <h1 class="company-name">Heartland Medical Care</h1>
-      <p class="slogan">Compassion in Every Heartbeat</p>
+    <div class="banner-center">
+      <div class="banner-title">Heartland Medical Care</div>
+      <div class="banner-slogan">Compassion in Every Heartbeat</div>
     </div>
 
-  <!-- TITLE BAR -->
-  <div class="title-bar">
-    <h2>Patient Registration Form</h2>
-    <p class="form-date">Today is: <span id="todayDate"></span></p>
+    <div class="banner-box banner-right">
+      <div class="info-title">Basic Company Info</div>
+      <div class="info-text">
+        Dr. Jake Messinge<br>
+        25 Cardio Ridge Ln<br>
+        The Woodlands, TX 77381<br>
+        (281) 555-0199
+      </div>
+    </div>
   </div>
 
-  <!-- FORM PANEL -->
-  <div class="form-panel">
+  <!-- ===================== TITLE + DATE ===================== -->
+  <div class="page-title-wrap">
+    <div class="page-title">Title: Patient Registration Form</div>
+    <div class="page-date">Today is: <span id="todayDate"></span></div>
+  </div>
 
-    <!-- centered container so titles + tables align -->
-    <div class="form-container">
+  <!-- ===================== MAIN PANEL ===================== -->
+  <div class="main-panel">
 
-      <form action="thankyou.html">
+    <form action="thankyou.html">
 
-        <!-- ===================== PATIENT INFORMATION ===================== -->
-        <h3 class="section-title">Patient Information</h3>
+      <!-- ============ SECTION 1 ============ -->
+      <div class="section-box">
+        <div class="section-heading">Heading 1: Patient Information</div>
 
         <table class="form-table">
           <tr>
@@ -59,14 +68,14 @@ Description: Patient registration form for MIS 3371 Homework 1.
           </tr>
 
           <tr>
-            <td>Date (MM/DD/YYYY)</td>
+            <td>Date of Birth (MM/DD/YYYY)</td>
             <td><input type="text" name="dob" placeholder="MM/DD/YYYY" required></td>
 
-            <td>Sex</td>
+            <td>Gender</td>
             <td colspan="3" class="inline-options">
-              <label><input type="radio" name="sex" value="Male"> Male</label>
-              <label><input type="radio" name="sex" value="Female"> Female</label>
-              <label><input type="radio" name="sex" value="Other"> Other</label>
+              <label><input type="radio" name="gender" value="Male"> Male</label>
+              <label><input type="radio" name="gender" value="Female"> Female</label>
+              <label><input type="radio" name="gender" value="Other"> Other</label>
             </td>
           </tr>
 
@@ -78,29 +87,13 @@ Description: Patient registration form for MIS 3371 Homework 1.
           </tr>
 
           <tr>
-            <td>Race</td>
-            <td colspan="5" class="inline-options">
-              <label><input type="checkbox" name="race" value="White"> White</label>
-              <label><input type="checkbox" name="race" value="Black/African American"> Black/African American</label>
-              <label><input type="checkbox" name="race" value="Asian"> Asian</label>
-              <label><input type="checkbox" name="race" value="Native Hawaiian/Other Pacific Islander"> Native Hawaiian/Other Pacific Islander</label>
-              <label><input type="checkbox" name="race" value="Other"> Other</label>
-            </td>
+            <td>Address Line 1</td>
+            <td colspan="5"><input type="text" name="address1" maxlength="30" class="wide-input"></td>
           </tr>
 
           <tr>
-            <td>Ethnicity</td>
-            <td colspan="5" class="inline-options">
-              <label><input type="radio" name="ethnicity" value="Non-Hispanic"> Non-Hispanic</label>
-              <label><input type="radio" name="ethnicity" value="Hispanic"> Hispanic</label>
-            </td>
-          </tr>
-
-          <tr>
-            <td>Address</td>
-            <td colspan="5">
-              <input type="text" name="address" maxlength="30" class="wide-input">
-            </td>
+            <td>Address Line 2</td>
+            <td colspan="5"><input type="text" name="address2" maxlength="30" class="wide-input"></td>
           </tr>
 
           <tr>
@@ -109,7 +102,7 @@ Description: Patient registration form for MIS 3371 Homework 1.
 
             <td>State</td>
             <td>
-              <select name="state">
+              <select name="emgState">
                 <option value="">Select</option>
                 <option>AL|Alabama</option>
                 <option>AK|Alaska</option>
@@ -179,10 +172,31 @@ Description: Patient registration form for MIS 3371 Homework 1.
               <input type="tel" name="phone" placeholder="(123) 456-7890" pattern="\(\d{3}\) \d{3}-\d{4}">
             </td>
           </tr>
-        </table>
 
-        <!-- ===================== EMERGENCY CONTACT ===================== -->
-        <h3 class="section-title">Emergency Contact Information</h3>
+          <tr>
+            <td>Check all that apply</td>
+            <td colspan="5" class="inline-options">
+              <label><input type="checkbox" name="history" value="High Blood Pressure"> High Blood Pressure</label>
+              <label><input type="checkbox" name="history" value="High Cholesterol"> High Cholesterol</label>
+              <label><input type="checkbox" name="history" value="Diabetes"> Diabetes</label>
+              <label><input type="checkbox" name="history" value="Heart Disease"> Heart Disease</label>
+              <label><input type="checkbox" name="history" value="Smoking"> Smoking</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Do you have insurance?</td>
+            <td colspan="5" class="inline-options">
+              <label><input type="radio" name="insurance" value="Yes"> Yes</label>
+              <label><input type="radio" name="insurance" value="No"> No</label>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- ============ SECTION 2 ============ -->
+      <div class="section-box">
+        <div class="section-heading">Heading 2: Emergency Contact Information</div>
 
         <table class="form-table">
           <tr>
@@ -190,7 +204,7 @@ Description: Patient registration form for MIS 3371 Homework 1.
             <td><input type="text" name="emgFirstName" maxlength="30"></td>
 
             <td>Middle Initial</td>
-            <td><input type="text" name="middleInit" maxlength="1"></td>
+            <td><input type="text" name="emgMiddleInit" maxlength="1"></td>
 
             <td>Last Name</td>
             <td><input type="text" name="emgLastName" maxlength="30"></td>
@@ -199,25 +213,23 @@ Description: Patient registration form for MIS 3371 Homework 1.
           <tr>
             <td>Relationship to Patient</td>
             <td colspan="5">
-              <select name="relationship" required>
+              <select name="relationship">
                 <option value="">Select</option>
-                <option value="Spouse">Spouse</option>
-                <option value="Parent">Parent (mother/father)</option>
-                <option value="Child">Child (son/daughter)</option>
-                <option value="Sibling">Sibling (brother/sister)</option>
-                <option value="Friend">Friend</option>
-                <option value="Guardian">Guardian</option>
-                <option value="Partner">Significant other/Partner</option>
-                <option value="Other">Other</option>
+                <option>Spouse</option>
+                <option>Parent</option>
+                <option>Child</option>
+                <option>Sibling</option>
+                <option>Friend</option>
+                <option>Guardian</option>
+                <option>Partner</option>
+                <option>Other</option>
               </select>
             </td>
           </tr>
 
           <tr>
             <td>Address</td>
-            <td colspan="5">
-              <input type="text" name="emgAddress" maxlength="30" class="wide-input">
-            </td>
+            <td colspan="5"><input type="text" name="emgAddress" maxlength="30" class="wide-input"></td>
           </tr>
 
           <tr>
@@ -226,7 +238,6 @@ Description: Patient registration form for MIS 3371 Homework 1.
 
             <td>State</td>
             <td>
-              <!-- IMPORTANT: emgState (not "state") -->
               <select name="emgState">
                 <option value="">Select</option>
                 <option>AL|Alabama</option>
@@ -298,94 +309,110 @@ Description: Patient registration form for MIS 3371 Homework 1.
             </td>
           </tr>
         </table>
+      </div>
 
-        <!-- ===================== TODAY'S VISIT ===================== -->
-        <h3 class="section-title">Today's Visit</h3>
+      <!-- ============ SECTION 3 ============ -->
+      <div class="section-box">
+        <div class="section-heading">Heading 3: Heart Health Evaluation</div>
 
         <table class="form-table">
           <tr>
-            <td>Reason for Visit</td>
+            <td>Describe symptoms (3x50)</td>
             <td colspan="5">
-              <textarea name="reason" rows="3" class="wide-textarea"></textarea>
+              <textarea name="symptoms" rows="3" cols="50" class="wide-textarea"></textarea>
             </td>
           </tr>
 
           <tr>
-            <td>Have you experienced chest pain?</td>
+            <td>Chest pain today?</td>
             <td colspan="2" class="inline-options">
               <label><input type="radio" name="chestPain" value="Yes"> Yes</label>
               <label><input type="radio" name="chestPain" value="No"> No</label>
             </td>
 
-            <td>How would you rate it? (1–10)</td>
+            <td>Rate pain (1–10)</td>
             <td colspan="2">
               <input type="range" id="painLevel" name="painLevel" min="1" max="10" step="1" value="1"
                      oninput="painOutput.value = painLevel.value">
               <output id="painOutput">1</output>
             </td>
           </tr>
-        </table>
-      
-      <!-- ===================== ACCOUNT SETUP===================== -->
-
-      <h3 class="section-title">Account Setup</h3>
-
-      <table class="form-table">
 
           <tr>
-          <td>Desired User ID</td>
-          <td>
-            <input type="text"
-                   name="userID"
-                   maxlength="30"
-                   required>
-          </td>
+            <td>Vaccinated?</td>
+            <td colspan="5" class="inline-options">
+              <label><input type="radio" name="vaccinated" value="Yes"> Yes</label>
+              <label><input type="radio" name="vaccinated" value="No"> No</label>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-          <td>Email (Portal Login)</td>
-          <td>
-            <input type="email"
-                   name="portalEmail"
-                 required>
-          </td>
-        </tr>
+      <!-- ============ SECTION 4 ============ -->
+      <div class="section-box">
+        <div class="section-heading">Heading 4: Account Setup</div>
 
-        <tr>
-          <td>Password</td>
-          <td>
-            <input type="password"
-                   name="password"
-                   maxlength="30"
-                   required>
-          </td>
+        <table class="form-table">
+          <tr>
+            <td>Desired User ID</td>
+            <td><input type="text" name="userID" maxlength="20" required></td>
 
-          <td>Re-enter Password</td>
-          <td>
-            <input type="password"
-                   name="confirmPassword"
-                   maxlength="30"
-                   required>
-          </td>
-        </tr>
-        
-      </table>
+            <td>Email (Portal Login)</td>
+            <td colspan="3"><input type="email" name="portalEmail" required></td>
+          </tr>
 
-<br>
+          <tr>
+            <td>Password</td>
+            <td><input type="password" name="password" maxlength="30" required></td>
 
-          <div class="button-row">
-          <input type="reset" value="Reset" class="btn">
-          <input type="submit" value="Submit" class="btn">
-        </div>
+            <td>Re-enter Password</td>
+            <td colspan="3"><input type="password" name="confirmPassword" maxlength="30" required></td>
+          </tr>
+        </table>
+      </div>
 
-  </form>
+      <!-- ===================== BUTTONS ===================== -->
+      <div class="button-row">
+        <input type="reset" value="Reset" class="btn">
+        <input type="submit" value="Submit" class="btn">
+      </div>
 
-    </div><!-- /form-container -->
-  </div><!-- /form-panel -->
+    </form>
+
+    <div class="contact-row">
+      <button type="button" class="btn-outline"
+              onclick="alert('Contact us at: contact@heartlandmedicalcare.com')">
+        Contact Us
+      </button>
+    </div>
+
+  </div><!-- /main-panel -->
+
+  <!-- ===================== FOOTER (mirrored) ===================== -->
+  <div class="footer-banner">
+    <div class="banner-box banner-left">
+      <div class="info-title">Basic Company Info</div>
+      <div class="info-text">
+        Dr. Jake Messinge<br>
+        25 Cardio Ridge Ln<br>
+        The Woodlands, TX 77381
+      </div>
+    </div>
+
+    <div class="banner-center">
+      <div class="banner-title">Heartland Medical Care</div>
+      <div class="banner-slogan">Compassion in Every Heartbeat</div>
+    </div>
+
+    <div class="banner-box banner-right">
+      <div class="info-title">Logo</div>
+    </div>
+  </div>
 
   <script>
     const d = new Date();
-    document.getElementById("todayDate").innerHTML = d.toDateString();
+    document.getElementById("todayDate").textContent = d.toDateString();
   </script>
-
 
 </body>
 </html>
