@@ -87,14 +87,12 @@ body{
   padding: 30px 0 50px 0;
 }
 
-/* centers all content */
 .form-container{
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* ONLY box we keep (around all core info) */
 .core-box{
   max-width: 980px;
   margin: 0 auto;
@@ -126,7 +124,7 @@ body{
 .form-table td{
   vertical-align: middle;
   font-weight: 600;
-  white-space: nowrap; /* keeps “Middle Initial” on one line */
+  white-space: nowrap;
 }
 
 /* label columns sizing */
