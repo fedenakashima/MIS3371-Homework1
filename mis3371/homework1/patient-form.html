@@ -29,9 +29,8 @@ Description: Patient registration form for MIS 3371 Homework 1.
       <p class="slogan">Compassion in Every Heartbeat</p>
     </div>
 
-    <!-- Optional: basic company info (top right). Keep or delete. -->
     <div class="info-wrap">
-      <p class="doc-line"><strong>Dr. Jake Messinge</strong></p>
+      <p class="doc-line"><strong>Dr. Jake Messinger</strong></p>
       <p class="doc-line">24702 Pinebrook Ridge Ln</p>
       <p class="doc-line">The Woodlands, TX 77381</p>
       <p class="doc-line">Phone: (281) 555-0199</p>
@@ -227,10 +226,15 @@ Description: Patient registration form for MIS 3371 Homework 1.
             </tr>
 
             <tr>
-              <td>Address</td>
-              <td colspan="5"><input type="text" name="emgAddress" maxlength="30" class="wide-input"></td>
+              <td>Address Line 1</td>
+              <td colspan="5"><input type="text" name="address1" maxlength="30" class="wide-input" required></td>
             </tr>
 
+            <tr>
+              <td>Address Line 2</td>
+              <td colspan="5"><input type="text" name="address2" maxlength="30" class="wide-input"></td>
+            </tr>
+            
             <tr>
               <td>City</td>
               <td><input type="text" name="emgCity" maxlength="30"></td>
@@ -313,12 +317,6 @@ Description: Patient registration form for MIS 3371 Homework 1.
           <h3 class="section-title">Heart Health Evaluation</h3>
 
           <table class="form-table">
-            <tr>
-              <td>Describe symptoms</td>
-              <td colspan="5">
-                <textarea name="symptoms" rows="3" cols="50" class="wide-textarea" placeholder="Describe your symptoms..."></textarea>
-              </td>
-            </tr>
 
             <tr>
               <td>Check all that apply</td>
