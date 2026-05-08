@@ -37,6 +37,7 @@ body.layout-fixed-hf{
   padding-top: calc(var(--site-header-h) + env(safe-area-inset-top, 0px) + 12px);
   min-height: calc(100vh - var(--site-header-h) - var(--site-footer-h) - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
   box-sizing: border-box;
+  background: #77a6a6;
 }
 .layout-fixed-hf .footer{
   position: fixed;
