@@ -9,11 +9,213 @@ MIS 3371 Homework 4 Java
 const NAME_RE = /^[A-Za-z'\-]{1,30}$/;
 const ADDRESS_RE = /^[A-Za-z0-9\s\.,#'\-\/]{2,30}$/;
 
-function $(id) {
-  return document.getElementById(id);
+/** Same folder as the HTML page (works on GitHub Pages if states.json is committed there). */
+const STATES_JSON_URL = "states.json";
+
+const COOKIE_FIRST_NAME = "hmc_patient_fname";
+const LS_PREFIX = "hmc_hw4_";
+const COOKIE_MAX_HOURS = 48;
+
+/** Non-sensitive fields only — no SSN, passwords, or first name (first name uses the cookie). */
+const LOCAL_TEXT_AND_SELECT_IDS = [
+  "middleInit", "lastName", "dob", "address1", "address2", "city", "state", "zip",
+  "email", "phone", "symptoms", "insuranceProvider", "otherProvider", "relationship",
+  "emgFirstName", "emgMiddleInit", "emgLastName", "emgAddress1", "emgAddress2",
+  "emgCity", "emgState", "emgZip", "emgEmail", "emgPhone", "userID", "portalEmail", "painLevel",
+];
+
+const LOCAL_RADIO_NAMES = ["sex", "ethnicity", "insurance", "chestPain", "priorHeartTreatment"];
+
+function cookiePath() {
+  const path = window.location.pathname;
+  const i = path.lastIndexOf("/");
+  return i <= 0 ? "/" : path.slice(0, i + 1);
 }
 
-const STATES_JSON_URL = "states.json";
+function getFirstNameCookie() {
+  const target = `${COOKIE_FIRST_NAME}=`;
+  const parts = document.cookie.split(";").map((s) => s.trim());
+  for (const p of parts) {
+    if (p.startsWith(target)) return decodeURIComponent(p.slice(target.length));
+  }
+  return "";
+}
+
+function setFirstNameCookie(firstName) {
+  const expires = new Date();
+  expires.setTime(expires.getTime() + COOKIE_MAX_HOURS * 3600 * 1000);
+  document.cookie = `${COOKIE_FIRST_NAME}=${encodeURIComponent(firstName)};expires=${expires.toUTCString()};path=${cookiePath()};SameSite=Lax`;
+}
+
+function eraseFirstNameCookie() {
+  document.cookie = `${COOKIE_FIRST_NAME}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${cookiePath()};SameSite=Lax`;
+}
+
+function lsKey(id) {
+  return LS_PREFIX + id;
+}
+
+function clearAllLocalFormStorage() {
+  const drop = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith(LS_PREFIX)) drop.push(k);
+  }
+  drop.forEach((k) => localStorage.removeItem(k));
+}
+
+function saveFieldToLocalStorage(fieldId) {
+  if (!$("rememberMe")?.checked) return;
+  const el = $(fieldId);
+  if (!el) return;
+  try {
+    localStorage.setItem(lsKey(fieldId), el.value);
+  } catch (e) {
+    console.warn("localStorage save failed", e);
+  }
+}
+
+function saveRadioGroupToLocalStorage(name) {
+  if (!$("rememberMe")?.checked) return;
+  const form = document.getElementById("patientForm");
+  if (!form) return;
+  const picked = form.querySelector(`input[name="${name}"]:checked`);
+  try {
+    localStorage.setItem(lsKey("radio_" + name), picked ? picked.value : "");
+  } catch (e) {
+    console.warn("localStorage save failed", e);
+  }
+}
+
+function persistFirstNameCookieIfRemembered() {
+  if (!$("rememberMe")?.checked) return;
+  const el = $("firstName");
+  if (!el) return;
+  const v = (el.value || "").trim();
+  if (v && NAME_RE.test(v)) setFirstNameCookie(v);
+}
+
+function refreshWelcomeBanner() {
+  const banner = $("welcomeBanner");
+  const wrap = $("notMeWrap");
+  const notMeText = $("notMeText");
+  const name = getFirstNameCookie().trim();
+  if (banner) {
+    banner.textContent = name ? `Welcome back, ${name}!` : "Hello — welcome, new user!";
+  }
+  if (wrap && notMeText) {
+    if (name) {
+      wrap.style.display = "block";
+      notMeText.textContent = `Not ${name}? Click here to start as a new user.`;
+    } else {
+      wrap.style.display = "none";
+      notMeText.textContent = "";
+    }
+  }
+  const fn = $("firstName");
+  if (fn && name) fn.value = name;
+}
+
+function setRadioGroupValue(name, value) {
+  if (!value) return;
+  const form = document.getElementById("patientForm");
+  if (!form) return;
+  form.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+    r.checked = r.value === value;
+  });
+}
+
+function restoreFormFromLocalStorage() {
+  const form = document.getElementById("patientForm");
+  if (!form || !getFirstNameCookie().trim()) return;
+
+  LOCAL_TEXT_AND_SELECT_IDS.forEach((id) => {
+    const el = $(id);
+    if (!el) return;
+    const v = localStorage.getItem(lsKey(id));
+    if (v !== null) el.value = v;
+  });
+
+  LOCAL_RADIO_NAMES.forEach((name) => {
+    const v = localStorage.getItem(lsKey("radio_" + name));
+    if (v) setRadioGroupValue(name, v);
+  });
+
+  const pain = localStorage.getItem(lsKey("painLevel"));
+  const painEl = $("painLevel");
+  if (painEl && pain !== null && pain !== "") {
+    painEl.value = pain;
+  }
+  syncPainOutput();
+}
+
+function startAsNewUserCleanup() {
+  const form = document.getElementById("patientForm");
+  eraseFirstNameCookie();
+  clearAllLocalFormStorage();
+  if (form) form.reset();
+  const cb = $("notMeCb");
+  if (cb) cb.checked = false;
+  refreshWelcomeBanner();
+  updateInsuranceFields();
+  syncPainOutput();
+  document.querySelectorAll(".field-invalid").forEach((el) => el.classList.remove("field-invalid"));
+  document.querySelectorAll("#patientForm .field-msg").forEach((el) => (el.textContent = ""));
+  const rp = $("review-panel");
+  if (rp) rp.style.display = "none";
+  setSubmitEnabled(false);
+  setMsg("validateStatus", "");
+}
+
+function wireRememberMeAndNotMe() {
+  $("rememberMe")?.addEventListener("change", () => {
+    if (!$("rememberMe").checked) {
+      eraseFirstNameCookie();
+      clearAllLocalFormStorage();
+      document.getElementById("patientForm")?.reset();
+      const rm = $("rememberMe");
+      if (rm) rm.checked = false;
+      refreshWelcomeBanner();
+      updateInsuranceFields();
+      syncPainOutput();
+      setSubmitEnabled(false);
+      setMsg("validateStatus", "");
+    } else {
+      persistFirstNameCookieIfRemembered();
+      LOCAL_TEXT_AND_SELECT_IDS.forEach((id) => saveFieldToLocalStorage(id));
+      LOCAL_RADIO_NAMES.forEach((name) => saveRadioGroupToLocalStorage(name));
+      saveFieldToLocalStorage("painLevel");
+    }
+  });
+
+  $("notMeCb")?.addEventListener("change", () => {
+    if ($("notMeCb").checked) startAsNewUserCleanup();
+  });
+}
+
+function wireLocalStoragePersistence() {
+  const form = document.getElementById("patientForm");
+  if (!form) return;
+
+  LOCAL_TEXT_AND_SELECT_IDS.forEach((id) => {
+    const el = $(id);
+    if (!el) return;
+    if (el.tagName === "SELECT") {
+      el.addEventListener("change", () => saveFieldToLocalStorage(id));
+    } else if (el.type === "range") {
+      el.addEventListener("input", () => saveFieldToLocalStorage(id));
+      el.addEventListener("change", () => saveFieldToLocalStorage(id));
+    } else {
+      el.addEventListener("blur", () => saveFieldToLocalStorage(id));
+    }
+  });
+
+  LOCAL_RADIO_NAMES.forEach((name) => {
+    form.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+      r.addEventListener("change", () => saveRadioGroupToLocalStorage(name));
+    });
+  });
+}
 
 function normalizeStateEntry(row) {
   if (!row || typeof row !== "object") return null;
@@ -52,7 +254,7 @@ function fillStateSelects(states) {
 }
 
 async function loadStatesWithFetch() {
-  const msg = document.getElementById("stateFetchMsg");
+  const msg = $("stateFetchMsg");
   const selPatient = $("state");
   const selEmg = $("emgState");
   const fail = (text) => {
@@ -88,6 +290,10 @@ async function loadStatesWithFetch() {
     console.error(err);
     fail(err.message || "Failed to load state list.");
   }
+}
+
+function $(id) {
+  return document.getElementById(id);
 }
 
 function setMsg(errId, message) {
@@ -688,6 +894,9 @@ function wireInsurance() {
       setMsg("validateStatus", "");
       updateInsuranceFields();
       syncPainOutput();
+      const c = getFirstNameCookie().trim();
+      if (c && $("firstName")) $("firstName").value = c;
+      refreshWelcomeBanner();
     }, 0);
   });
 
@@ -697,7 +906,20 @@ function wireInsurance() {
 document.addEventListener("DOMContentLoaded", async () => {
   const form = document.getElementById("patientForm");
 
+  const hadCookie = getFirstNameCookie().trim().length > 0;
+  if (!hadCookie) clearAllLocalFormStorage();
+  refreshWelcomeBanner();
+
   await loadStatesWithFetch();
+
+  if (hadCookie) {
+    restoreFormFromLocalStorage();
+    updateInsuranceFields();
+    syncPainOutput();
+  }
+
+  wireRememberMeAndNotMe();
+  wireLocalStoragePersistence();
 
   const today = $("todayDate");
   if (today) today.textContent = new Date().toDateString();
@@ -713,7 +935,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   $("firstName").addEventListener("input", () => { validateFirstLast($("firstName"), "err-firstName", "First name"); lockSubmitAfterEdits(); });
-  $("firstName").addEventListener("blur", () => validateFirstLast($("firstName"), "err-firstName", "First name"));
+  $("firstName").addEventListener("blur", () => {
+    validateFirstLast($("firstName"), "err-firstName", "First name");
+    persistFirstNameCookieIfRemembered();
+    refreshWelcomeBanner();
+  });
 
   $("middleInit").addEventListener("input", () => { validateMiddle($("middleInit"), "err-middleInit"); lockSubmitAfterEdits(); });
   $("middleInit").addEventListener("blur", () => validateMiddle($("middleInit"), "err-middleInit"));
@@ -769,6 +995,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     r.addEventListener("change", lockSubmitAfterEdits);
   });
   form.querySelectorAll("input[type='checkbox']").forEach((c) => {
+    if (c.id === "rememberMe" || c.id === "notMeCb") return;
     c.addEventListener("change", lockSubmitAfterEdits);
   });
 
