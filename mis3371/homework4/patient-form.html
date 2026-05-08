@@ -267,40 +267,60 @@ Date last edited: 2026-05-08
               </tr>
             </table>
 
-            <h3 class="section-title">Heart health evaluation</h3>
-            <table class="form-table heart-eval" summary="Heart evaluation">
-              <tr>
-                <td colspan="6" class="heart-eval-full">
-                  <div class="heart-eval-line heart-eval-split">
-                    <div class="heart-group">
-                      <span class="heart-q">Any chest pain?</span>
-                      <div class="heart-inline-opts">
-                        <label><input type="radio" name="chestPain" value="Yes" /> Yes</label>
-                        <label><input type="radio" name="chestPain" value="No" /> No</label>
-                      </div>
-                      <span id="err-chestPain" class="field-msg" role="alert"></span>
-                    </div>
-                    <div class="heart-divider" aria-hidden="true"></div>
-                    <div class="heart-group">
-                      <span class="heart-q">Prior heart treatment?</span>
-                      <div class="heart-inline-opts">
-                        <label><input type="radio" name="priorHeartTreatment" value="Yes" /> Yes</label>
-                        <label><input type="radio" name="priorHeartTreatment" value="No" /> No</label>
-                      </div>
-                      <span id="err-priorHeartTreatment" class="field-msg" role="alert"></span>
-                    </div>
+          <h3 class="section-title">Heart Health Evaluation</h3>
+
+          <table class="form-table heart-eval">
+            <tr>
+              <td colspan="6" class="heart-eval-full">
+                <div class="heart-eval-line">
+                  <span class="heart-lead"><strong>Check all that apply</strong></span>
+                  <span class="heart-inline-opts">
+                    <label><input type="checkbox" name="hxHighBP" value="High Blood Pressure"> High Blood Pressure</label>
+                    <label><input type="checkbox" name="hxHighChol" value="High Cholesterol"> High Cholesterol</label>
+                    <label><input type="checkbox" name="hxDiabetes" value="Diabetes"> Diabetes</label>
+                    <label><input type="checkbox" name="hxSmoker" value="Smoker"> Smoker</label>
+                    <label><input type="checkbox" name="hxFamily" value="Family History"> History of heart disease</label>
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="6" class="heart-eval-full">
+                <div class="heart-eval-line heart-eval-split">
+                  <div class="heart-group">
+                    <span class="heart-q">Have you recently experienced chest pain?</span>
+                    <label><input type="radio" name="chestPain" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="chestPain" value="No"> No</label>
+                    <span class="field-msg field-msg--inline" id="err-chestPain" aria-live="polite"></span>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="6" class="heart-eval-full">
-                  <label for="painLevel">Pain level (0–10)</label>
-                  <input type="range" id="painLevel" name="painLevel" min="0" max="10" value="0" />
-                  <output id="painOutput" for="painLevel">0</output>
-                  <span id="err-painLevel" class="field-msg" role="alert"></span>
-                </td>
-              </tr>
-            </table>
+
+                  <div class="heart-divider" aria-hidden="true"></div>
+
+                  <div class="heart-group">
+                    <span class="heart-q">Rate your pain (1–10)</span>
+                    <input type="range" id="painLevel" name="painLevel" min="1" max="10" step="1" value="1"
+                           title="Slide to rate pain; value updates next to the slider.">
+                    <output id="painOutput" for="painLevel">1</output>
+                    <span class="field-msg field-msg--inline" id="err-painLevel" aria-live="polite"></span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="6" class="heart-eval-full">
+                <div class="heart-eval-line">
+                  <div class="heart-group">
+                    <span class="heart-q">Have you previously been treated for a heart condition?</span>
+                    <label><input type="radio" name="priorHeartTreatment" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="priorHeartTreatment" value="No"> No</label>
+                    <span class="field-msg field-msg--inline" id="err-priorHeartTreatment" aria-live="polite"></span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
 
             <h3 class="section-title">Patient portal credentials</h3>
             <table class="form-table" summary="Portal credentials">
