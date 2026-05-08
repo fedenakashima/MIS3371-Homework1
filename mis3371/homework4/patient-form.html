@@ -33,10 +33,17 @@ Homework 4
         
       </div>
     </div>
-    <div class="title-bar">
-      <h2>Patient Registration</h2>
-      <p class="form-date">Today is: <span id="todayDate"></span></p>
-    </div>
+      <div class="title-bar">
+        <h2>Patient Registration</h2>
+        <p id="welcomeBanner" class="welcome-banner" role="status"></p>
+      <div id="notMeWrap" class="not-me-wrap" style="display: none;">
+        <label class="not-me-label">
+        <input type="checkbox" id="notMeCb" />
+        <span id="notMeText"></span>
+    </label>
+  </div>
+  <p class="form-date">Today is: <span id="todayDate"></span></p>
+</div>
   </header>
 
   <main class="site-main">
@@ -323,7 +330,7 @@ Homework 4
             </tr>
           </table>
 
-            <h3 class="section-title">Patient portal credentials</h3>
+                <h3 class="section-title">Patient portal credentials</h3>
             <table class="form-table" summary="Portal credentials">
               <tr>
                 <td><label for="userID">User ID</label></td>
@@ -353,8 +360,18 @@ Homework 4
               </tr>
             </table>
 
-            <p id="validateStatus" class="validate-status" role="status"></p>
+            <table class="form-table" summary="Remember me setting">
+              <tr>
+                <td colspan="6">
+                  <label class="remember-label">
+                    <input type="checkbox" id="rememberMe" name="rememberMe" checked />
+                    Remember me — save my first name in a cookie (up to 48 hours) and other non-sensitive fields in local storage on this browser.
+                  </label>
+                </td>
+              </tr>
+            </table>
 
+            <p id="validateStatus" class="validate-status" role="status"></p>
             <div class="button-row">
               <input type="button" class="btn" id="validateBtn" value="Validate" />
               <input type="submit" class="btn" id="submitBtn" value="Submit" disabled />
