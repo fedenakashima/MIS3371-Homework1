@@ -7,8 +7,8 @@ MIS 3371 Homework 4
 */
 
 :root{
-  --site-header-h: 220px;
-  --site-footer-h: 104px;
+  --site-header-h: 340px;
+  --site-footer-h: 112px;
 }
 
 body{
@@ -34,11 +34,10 @@ body.layout-fixed-hf{
 }
 
 .site-main{
-  padding-top: var(--site-header-h);
-  min-height: calc(100vh - var(--site-header-h) - var(--site-footer-h));
+  padding-top: calc(var(--site-header-h) + env(safe-area-inset-top, 0px) + 12px);
+  min-height: calc(100vh - var(--site-header-h) - var(--site-footer-h) - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
   box-sizing: border-box;
 }
-
 .layout-fixed-hf .footer{
   position: fixed;
   bottom: 0;
@@ -50,7 +49,7 @@ body.layout-fixed-hf{
 
 @media (max-width: 900px){
   :root{
-    --site-header-h: 260px;
+    --site-header-h: 400px;
   }
 }
 
