@@ -13,6 +13,83 @@ function $(id) {
   return document.getElementById(id);
 }
 
+const STATES_JSON_URL = "states.json";
+
+function normalizeStateEntry(row) {
+  if (!row || typeof row !== "object") return null;
+  const code = row.code || row.abbr || row.state || "";
+  const name = row.name || row.stateName || "";
+  if (!code || !name) return null;
+  return { code: String(code).toUpperCase().slice(0, 2), name: String(name) };
+}
+
+function fillStateSelects(states) {
+  const selPatient = $("state");
+  const selEmg = $("emgState");
+  if (!selPatient || !selEmg) return;
+  const prevP = selPatient.value;
+  const prevE = selEmg.value;
+  const emptyLabel = "Select state";
+  function build(sel) {
+    sel.innerHTML = "";
+    const first = document.createElement("option");
+    first.value = "";
+    first.textContent = emptyLabel;
+    sel.appendChild(first);
+    states.forEach((s) => {
+      const o = document.createElement("option");
+      o.value = s.code;
+      o.textContent = s.name;
+      sel.appendChild(o);
+    });
+  }
+  build(selPatient);
+  build(selEmg);
+  if ([...selPatient.options].some((o) => o.value === prevP)) selPatient.value = prevP;
+  if ([...selEmg.options].some((o) => o.value === prevE)) selEmg.value = prevE;
+  selPatient.classList.remove("states-loading");
+  selEmg.classList.remove("states-loading");
+}
+
+async function loadStatesWithFetch() {
+  const msg = document.getElementById("stateFetchMsg");
+  const selPatient = $("state");
+  const selEmg = $("emgState");
+  const fail = (text) => {
+    if (msg) {
+      msg.textContent = text;
+      msg.classList.add("state-fetch-msg--error");
+    }
+    if (selPatient) {
+      selPatient.innerHTML = '<option value="">Could not load states</option>';
+      selPatient.classList.remove("states-loading");
+    }
+    if (selEmg) {
+      selEmg.innerHTML = '<option value="">Could not load states</option>';
+      selEmg.classList.remove("states-loading");
+    }
+  };
+
+  try {
+    const res = await fetch(STATES_JSON_URL);
+    if (!res.ok) throw new Error(`Could not load ${STATES_JSON_URL} (HTTP ${res.status}).`);
+    const data = await res.json();
+    const raw = Array.isArray(data) ? data : data.states;
+    if (!Array.isArray(raw)) throw new Error('states.json must be an array or { "states": [...] }.');
+    const states = raw.map(normalizeStateEntry).filter(Boolean);
+    if (states.length < 10) throw new Error("State list in JSON looks invalid (too few entries).");
+    states.sort((a, b) => a.name.localeCompare(b.name));
+    fillStateSelects(states);
+    if (msg) {
+      msg.textContent = "";
+      msg.classList.remove("state-fetch-msg--error");
+    }
+  } catch (err) {
+    console.error(err);
+    fail(err.message || "Failed to load state list.");
+  }
+}
+
 function setMsg(errId, message) {
   const el = typeof errId === "string" ? $(errId) : errId;
   if (!el) return;
@@ -617,8 +694,10 @@ function wireInsurance() {
   updateInsuranceFields();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const form = document.getElementById("patientForm");
+
+  await loadStatesWithFetch();
 
   const today = $("todayDate");
   if (today) today.textContent = new Date().toDateString();
